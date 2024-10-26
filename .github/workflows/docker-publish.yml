@@ -20,7 +20,7 @@ jobs:
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f Dockerfile -t karthiksekaran86/ocp-gitaction-1:latest
+            docker build . -f Dockerfile -t karthiksekaran86/ocp-test-1:latest
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/ocp-gitaction-1:latest
+          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/ocp-test-1:latest
