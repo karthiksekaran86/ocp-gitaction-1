@@ -40,7 +40,7 @@ env:
 
   # 🖊️ EDIT to change the image registry settings.
   # Registries such as GHCR, Quay.io, and Docker Hub are supported.
-  IMAGE_REGISTRY: docker.io/karthiksekaran86/ocp-test-1
+  IMAGE_REGISTRY: docker.io/karthiksekaran86
   IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
 
