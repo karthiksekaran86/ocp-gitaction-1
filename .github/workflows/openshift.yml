@@ -50,7 +50,7 @@ env:
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
   workflow_dispatch:
-  watch:
+  push:
     # Edit to the branch(es) you want to build and deploy on each push.
     branches: [ "main" ]
 
@@ -72,7 +72,7 @@ jobs:
     # 🖊️ Uncomment this if you are using CRDA scan step above
     # needs: crda-scan
     name: Build and deploy to OpenShift
-    runs-on: ubuntu-latest
+    runs-on: linux-run01
     # environment: production
 
     outputs:
