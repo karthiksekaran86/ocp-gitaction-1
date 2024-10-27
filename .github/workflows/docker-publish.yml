@@ -6,7 +6,7 @@ on:
 jobs:
     build:
       name: push docker image to docker hub
-      runs-on: ubuntu-latest
+      runs-on: linux-run01
       ##runs-on: karthik-win
       steps:
         - uses: actions/checkout@v2
