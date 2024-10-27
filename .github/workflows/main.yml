@@ -1,7 +1,7 @@
 name: Build and Push Docker image 222
 
 on:
-  push:
+  watch:
     branches:
       - main  # Triggers the workflow on push to the main branch  
 jobs:
