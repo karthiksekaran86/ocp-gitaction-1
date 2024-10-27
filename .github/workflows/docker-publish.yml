@@ -5,7 +5,7 @@ on:
       - main
 jobs:
     build:
-      name: push docker image to docker hub
+      name: push docker image to docker hub1
       runs-on: linux-run01
       ##runs-on: karthik-win
       steps:
