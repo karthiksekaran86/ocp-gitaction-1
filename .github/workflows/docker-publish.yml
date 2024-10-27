@@ -16,8 +16,8 @@ jobs:
             password: ${{secrets.DOCKERHUB_PASSWORD}}
             DOCKER_TOKEN: ${{ env.DOCKERHUB_TOKEN }}
           run: |
-            echo $DOCKER_TOKEN | docker login docker.io -u $username --password-stdin 
-            ## docker login -u $username -p $password 
+            ## docker login -u $username -p $password
+            docker login -u karthiksekaran86 -p Treasure#09
         - name: build the docker image
           id: build-docker-image
           run: |
