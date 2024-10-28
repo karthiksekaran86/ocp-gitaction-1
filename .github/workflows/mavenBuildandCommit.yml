@@ -32,5 +32,5 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 3
-      run: git config --global user.name "karthiksekaran86" && git config --global user.email "karthiksekaran86mail@gmail.com" && git add . && git status && git commit -am "yml commit" && git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git && echo "HELO2" && git push
+      run: git config --global user.name "karthiksekaran86" && git config --global user.email "karthiksekaran86mail@gmail.com" && git add . && git status && git commit -am "yml commit success" && git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git && echo "HELO2" && git push
       
