@@ -28,9 +28,5 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 2
-      run: pwd && git add .           
-
-   # - name: Publish to GitHub Packages Apache Maven
-   #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-   #   env:
-   #     GITHUB_TOKEN: ${{ github.token }}
+      run: git add . && git status && git commit -am "yml commit" && git remote add origin https://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@https://github.com/karthiksekaran86/ocp-gitaction-1.git && git push origin HEAD
+      
