@@ -28,9 +28,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 2
-      run: git add .
-           git status
-           pwd
+      run: pwd && git add .           
 
    # - name: Publish to GitHub Packages Apache Maven
    #  run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
