@@ -24,7 +24,7 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven 2
+    - name: Build with Maven 3
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 3
