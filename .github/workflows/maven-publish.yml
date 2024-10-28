@@ -27,11 +27,12 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-    - name: Make target directory
-      run: git add .
-           git status
-           pwd
-    
+    - name: Make target directory 2
+      run: mkdir staging && cp target/ocp-test-1-1.jar staging
+    - name: Upload Artifact 2
+      uses: actions/upload-artifact@v4
+      with:
+        name: Package
         path: staging
 
    # - name: Publish to GitHub Packages Apache Maven
