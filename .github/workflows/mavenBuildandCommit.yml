@@ -28,5 +28,5 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 3
-      run: git add . && git status && git commit -am "yml commit" && git remote add origin https://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@github.com/karthiksekaran86/ocp-gitaction-1.git && git push origin HEAD
+      run: git add . && git remote add origin https://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@github.com/karthiksekaran86/ocp-gitaction-1.git && git status && git commit -am "yml commit" && git push origin HEAD
       
