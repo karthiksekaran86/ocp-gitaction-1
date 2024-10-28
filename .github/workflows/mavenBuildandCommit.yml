@@ -11,9 +11,13 @@ jobs:
   build:
     runs-on: linux-run01
     permissions:
-      contents: read
+      contents: write
       packages: write
-
+      deployments: write
+      statuses: write
+      actions: write
+      checks: read
+      
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17 2
@@ -28,5 +32,5 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: Make target directory 3
-      run: git config --global user.name "karthiksekaran86" && git config --global user.email "karthiksekaran86mail@gmail.com" && git add . && git status && git commit -am "yml commit" && git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git && echo "HELO" && git push
+      run: git config --global user.name "karthiksekaran86" && git config --global user.email "karthiksekaran86mail@gmail.com" && git add . && git status && git commit -am "yml commit" && git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git && echo "HELO2" && git push
       
