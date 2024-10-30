@@ -17,4 +17,4 @@ jobs:
         - name: first step to print parameter
           id: build-docker-image
           run: |
-            ls -la && echo "Hello" && echo ${{ github.event.inputs.environment }}
+            ls -la && echo "Hello" && echo ${{ github.event.inputs.tags }}
