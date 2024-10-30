@@ -1,4 +1,5 @@
-on: 
+name: Manual Input
+on:
   workflow_dispatch:
     inputs:
       logLevel:
@@ -7,3 +8,13 @@ on:
         default: 'warning'
       tags:
         description: 'Test scenario tags'
+
+jobs:
+    build:
+      name: manual entry test
+      runs-on: linux-run01
+      steps:
+        - name: first step to print parameter
+          id: build-docker-image
+          run: |
+            ls -la && echo "Hello"
