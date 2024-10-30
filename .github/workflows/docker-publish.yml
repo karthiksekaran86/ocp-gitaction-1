@@ -1,6 +1,6 @@
 name: Build Docker Image
 on:
-  watch:
+  push:
     branches:
       - main
 jobs:
@@ -18,7 +18,6 @@ jobs:
             DOCKER_TOKEN: ${{ env.DOCKERHUB_TOKEN }}
           run: |
             docker login -u $username -p $password
-            ##docker login -u karthiksekaran86 -p Treasure#09
         - name: build the docker image
           id: build-docker-image
           run: |
