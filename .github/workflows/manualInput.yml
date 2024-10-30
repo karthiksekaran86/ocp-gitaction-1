@@ -6,8 +6,17 @@ on:
         description: 'Log level'     
         required: true
         default: 'warning'
-      tags:
-        description: 'environment'
+      changeticket:
+        description: 'Change Ticket Number'
+        required: true
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'SIT'
+      dbReq:
+        description: 'DB Required'
+        required: true
+        default: 'YES'
 
 jobs:
     build:
@@ -17,4 +26,4 @@ jobs:
         - name: first step to print parameter
           id: build-docker-image
           run: |
-            ls -la && echo "Hello" && echo ${{ github.event.inputs.tags }}
+            ls -la && echo "Hello" && echo ${{ github.event.inputs.changeticket }} && echo ${{ github.event.inputs.environment }}
