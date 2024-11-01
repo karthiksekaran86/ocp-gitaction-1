@@ -12,6 +12,6 @@ jobs:
     - name: Checkout repository
       run: ls -ltra |
            pwd |
-           ppp=`pwd' |
+           ppp=`pwd` |
            echo "The current path is :"$ppp
       
