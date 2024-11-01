@@ -45,16 +45,13 @@ jobs:
             ppp=`pwd`
             echo "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ "$ppp
             ls -la 
-            docker tag ocp1/ocp-test-1-1:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
-            docker tag ocp2/ocp-test-1-2:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-2:1
+            docker tag ocp-test-1-1:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
+            docker tag ocp-test-1-2:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-2:1
 
         - name: push docker image
           id: push-docker-image
           run: |
             pwd
-            cd ocp1
             ls -la 
-            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
-            cd ocp2
-            ls -la 
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1            
             docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-2:1
