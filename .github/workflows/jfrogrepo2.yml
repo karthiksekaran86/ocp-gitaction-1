@@ -24,8 +24,6 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
-            ppp=`pwd`
-            echo "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ "$ppp
             ls -ltra            
             cd ocp1
             docker build . -f Dockerfile -t ocp-test-1-1:1
@@ -44,8 +42,8 @@ jobs:
         - name: tag docker image
           id: tag-docker-image
           run: |
-            pwd
-            cd ../ocp1
+            ppp=`pwd`
+            echo "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ "$ppp
             ls -la 
             docker tag ocp-test-1-1:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
             cd ../ocp2
