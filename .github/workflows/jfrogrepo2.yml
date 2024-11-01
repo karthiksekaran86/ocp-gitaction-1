@@ -1,6 +1,6 @@
 name: Build Docker Image and store in Jfrog 2
 on:
-  push:
+  watch:
     branches:
       - main
 jobs:
