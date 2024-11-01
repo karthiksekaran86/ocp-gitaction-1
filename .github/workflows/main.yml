@@ -10,6 +10,8 @@ jobs:
 
     steps:
     - name: Checkout repository
-      run: ls -ltra &&
-           pwd
+      run: |
+       ls -ltra
+       pwd
+       echo "ABC"
            
