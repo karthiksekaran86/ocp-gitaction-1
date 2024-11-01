@@ -24,8 +24,10 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
-            cd ocp1
+            ppp=`pwd`
+            echo "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ "$ppp
             ls -ltra            
+            cd ocp1
             docker build . -f Dockerfile -t ocp-test-1-1:1
             cd ../ocp2
             ls -ltra            
