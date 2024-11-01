@@ -1,6 +1,6 @@
 name: Build Docker Image and store in Jfrog 3
 on:
-  watch:
+  push:
     branches:
       - main
 jobs:
@@ -24,8 +24,12 @@ jobs:
         - name: build the docker image
           id: build-docker-image
           run: |
-            ls -la 
-            docker build . -f Dockerfile -t ocp-test-1:4
+            cd ocp1
+            ls -ltra            
+            docker build . -f Dockerfile -t ocp-test-1-1:1
+            cd ../ocp2
+            ls -ltra            
+            docker build . -f Dockerfile -t ocp-test-1-2:1
           
         - name: login to Jfrog
           id: jfrog-login
@@ -38,11 +42,21 @@ jobs:
         - name: tag docker image
           id: tag-docker-image
           run: |
+            pwd
+            cd ../ocp1
             ls -la 
-            docker tag ocp-test-1:4 trialxdxact.jfrog.io/test1-docker/ocp-test-1:4
+            docker tag ocp-test-1-1:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
+            cd ../ocp2
+            ls -la 
+            docker tag ocp-test-1-2:1 trialxdxact.jfrog.io/test1-docker/ocp-test-1-2:1
 
         - name: push docker image
           id: push-docker-image
           run: |
+            pwd
+            cd ../ocp1
             ls -la 
-            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:4
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:1
+            cd ../ocp2
+            ls -la 
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-2:1
