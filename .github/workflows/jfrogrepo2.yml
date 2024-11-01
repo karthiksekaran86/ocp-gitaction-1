@@ -29,16 +29,16 @@ jobs:
         - name: login to Jfrog
           id: jfrog-login
           env:
-            username: ${{secrets.DOCKERHUB_USERNAME}}
-            password: ${{secrets.DOCKERHUB_PASSWORD}}
+            jf_username: ${{secrets.JFROG_USERNAME}}
+            jf_password: ${{secrets.JFROG_PASSWORD}}
           run: |
-            docker login trialxdxact.jfrog.io -u karthiksekaran86 -p Treasure#09
+            docker login trialxdxact.jfrog.io -u $jf_username -p $jf_password
          
         - name: tag docker image
           id: tag-docker-image
           run: |
             ls -la 
-            docker tag ocp-test-1 trialxdxact.jfrog.io/test1-docker/ocp-test-1:1
+            docker tag ocp-test-1 trialxdxact.jfrog.io/test1-docker/ocp-test-1:2
 
         - name: push docker image
           id: push-docker-image
