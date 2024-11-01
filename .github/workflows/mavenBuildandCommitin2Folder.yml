@@ -4,7 +4,7 @@
 name: Maven Package and Commit in 2 folders
 
 on:
-  watch:
+  push:
     branches:
       - main
 jobs:
@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         java-version: '17'
-        distribution: 'temurin'
+        distribution: 'microsoft'
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
@@ -34,7 +34,7 @@ jobs:
     - name: Copy jar to 2 different folder
       run: |
         pwd
-        cp target/*.jar ocp1/ocp-test-1-1.jar
+        ##cp target/*.jar ocp1/ocp-test-1-1.jar
         cp target/*.jar ocp2/ocp-test-1-2.jar
 
     - name: Make target directory 3
@@ -44,6 +44,5 @@ jobs:
         git add . && git status
         git commit -am "yml commit success"
         git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git
-        echo "HELO2"
         git push
       
