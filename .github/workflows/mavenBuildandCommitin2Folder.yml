@@ -4,7 +4,7 @@
 name: Maven Package and Commit in 2 folders
 
 on:
-  push:
+  watch:
     branches:
       - main
 jobs:
