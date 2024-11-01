@@ -6,7 +6,7 @@ on:
       - main  # Triggers the workflow on push to the main branch  
 jobs:
   build:
-    runs-on: karthik-win
+    runs-on: linux-run01
 
     steps:
     - name: Checkout repository
