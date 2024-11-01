@@ -24,7 +24,7 @@ jobs:
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f Dockerfile -t ocp-test-1
+            docker build . -f Dockerfile -t ocp-test-1:2
           
         - name: login to Jfrog
           id: jfrog-login
@@ -38,7 +38,7 @@ jobs:
           id: tag-docker-image
           run: |
             ls -la 
-            docker tag ocp-test-1 trialxdxact.jfrog.io/test1-docker/ocp-test-1:2
+            docker tag ocp-test-1:2 trialxdxact.jfrog.io/test1-docker/ocp-test-1:2
 
         - name: push docker image
           id: push-docker-image
