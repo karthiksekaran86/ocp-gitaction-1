@@ -1,0 +1,47 @@
+name: Build Docker Image and store in Jfrog 2
+on:
+  push:
+    branches:
+      - main
+jobs:
+    build:
+      name: push docker image to jfrog 2
+      runs-on: linux-run01
+      ##runs-on: karthik-win
+      steps:
+        - name: Checkout JAR
+          uses: actions/checkout@v2
+
+        - name: login to docker hub
+          id: docker-hub
+          env:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_PASSWORD}}
+            DOCKER_TOKEN: ${{ env.DOCKERHUB_TOKEN }}
+          run: |
+            docker login -u $username -p $password
+        - name: build the docker image
+          id: build-docker-image
+          run: |
+            ls -la 
+            docker build . -f Dockerfile -t ocp-test-1
+          
+        - name: login to Jfrog
+          id: jfrog-login
+          env:
+            username: ${{secrets.DOCKERHUB_USERNAME}}
+            password: ${{secrets.DOCKERHUB_PASSWORD}}
+          run: |
+            docker login trialxdxact.jfrog.io -u karthiksekaran86 -p Treasure#09
+         
+        - name: tag docker image
+          id: tag-docker-image
+          run: |
+            ls -la 
+            docker tag ocp-test-1 trialxdxact.jfrog.io/test1-docker/ocp-test-1:1
+
+        - name: push docker image
+          id: push-docker-image
+          run: |
+            ls -la 
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:1        
