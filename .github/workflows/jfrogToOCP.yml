@@ -20,7 +20,8 @@ env:
   #IMAGE_REGISTRY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 
   # 🖊️ EDIT to specify custom tags for the container image, or default tags will be generated below.
-  IMAGE_TAGS: "trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:2"
+  IMAGE_TAGS: ""
+  #IMAGE_TAGS: "trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:2"
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
