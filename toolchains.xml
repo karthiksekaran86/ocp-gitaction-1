@@ -68,4 +68,15 @@
       <jdkHome>/home/karthiksekaran86/gitaction/actions-runner/_work/_tool/Java_Temurin-Hotspot_jdk/17.0.13-11/x64</jdkHome>
     </configuration>
   </toolchain>
+  <toolchain>
+    <type>jdk</type>
+    <provides>
+      <version>17</version>
+      <vendor>temurin</vendor>
+      <id>temurin_17</id>
+    </provides>
+    <configuration>
+      <jdkHome>/home/karthiksekaran86/gitaction/actions-runner/_work/_tool/Java_Temurin-Hotspot_jdk/17.0.13-11/x64</jdkHome>
+    </configuration>
+  </toolchain>
 </toolchains>
