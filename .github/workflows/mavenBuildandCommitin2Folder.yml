@@ -1,0 +1,42 @@
+# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
+# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+
+name: Maven Package and Commit in 2 folders
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: linux-run01
+    permissions:
+      contents: write
+      packages: write
+      deployments: write
+      statuses: write
+      actions: write
+      checks: read
+      
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17 2
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+        settings-path: ${{ github.workspace }} # location for the settings.xml file
+
+    - name: Build with Maven 3
+      run: mvn -B package --file pom.xml
+
+    - name: Copy jar to 2 different folder
+      run: |
+        pwd
+        cp /target/*.jar /ocp1/ocp-test-1-1.jar
+        cp /target/*.jar /ocp2/ocp-test-1-2.jar
+
+    - name: Make target directory 3
+      run: git config --global user.name "karthiksekaran86" && git config --global user.email "karthiksekaran86mail@gmail.com" && git add . && git status && git commit -am "yml commit success" && git remote set-url origin https://${{secrets.GIT_TOKEN}}@github.com/karthiksekaran86/ocp-gitaction-1.git && echo "HELO2" && git push
+      
