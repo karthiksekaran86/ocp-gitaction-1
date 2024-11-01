@@ -44,4 +44,4 @@ jobs:
           id: push-docker-image
           run: |
             ls -la 
-            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:1        
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:2
