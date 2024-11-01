@@ -1,6 +1,6 @@
 name: Build Docker Image and store in Jfrog 3
 on:
-  push:
+  watch:
     branches:
       - main
 jobs:
@@ -12,19 +12,20 @@ jobs:
         - name: Checkout JAR
           uses: actions/checkout@v2
 
-        - name: login to docker hub
-          id: docker-hub
-          env:
-            username: ${{secrets.DOCKERHUB_USERNAME}}
-            password: ${{secrets.DOCKERHUB_PASSWORD}}
-            DOCKER_TOKEN: ${{ env.DOCKERHUB_TOKEN }}
-          run: |
-            docker login -u $username -p $password
+       # - name: login to docker hub
+       #   id: docker-hub
+       #   env:
+       #     username: ${{secrets.DOCKERHUB_USERNAME}}
+       #     password: ${{secrets.DOCKERHUB_PASSWORD}}
+       #     DOCKER_TOKEN: ${{ env.DOCKERHUB_TOKEN }}
+       #   run: |
+       #     docker login -u $username -p $password
+       
         - name: build the docker image
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f Dockerfile -t ocp-test-1:3
+            docker build . -f Dockerfile -t ocp-test-1:4
           
         - name: login to Jfrog
           id: jfrog-login
@@ -38,10 +39,10 @@ jobs:
           id: tag-docker-image
           run: |
             ls -la 
-            docker tag ocp-test-1:3 trialxdxact.jfrog.io/test1-docker/ocp-test-1:3
+            docker tag ocp-test-1:4 trialxdxact.jfrog.io/test1-docker/ocp-test-1:4
 
         - name: push docker image
           id: push-docker-image
           run: |
             ls -la 
-            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:3
+            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1:4
