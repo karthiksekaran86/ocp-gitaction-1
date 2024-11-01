@@ -37,7 +37,7 @@ jobs:
     # needs: crda-scan
     name: Build and deploy to OpenShift 2
     runs-on: linux-run01
-    environment: dev
+    #environment: dev
 
     outputs:
       ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
