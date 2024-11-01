@@ -15,7 +15,7 @@ public class OcpTest1Application {
 	
 	@GetMapping("/get")
 	public String method1() {
-		return "this is my first OCP app";
+		return "this is my first OCP app  2";
 	}
 
 }
