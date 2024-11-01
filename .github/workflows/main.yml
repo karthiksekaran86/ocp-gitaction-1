@@ -10,6 +10,6 @@ jobs:
 
     steps:
     - name: Checkout repository
-      run: ls -ltra |
+      runs: ls -ltra |
            pwd
            
