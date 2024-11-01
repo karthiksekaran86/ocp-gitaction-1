@@ -6,22 +6,22 @@ env:
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
   OPENSHIFT_NAMESPACE: ""
 
-  APP_NAME: "ocp-test-1"
+  APP_NAME: "ocp-test-1-1"
 
   APP_PORT: "8080"
 
   # 🖊️ EDIT to change the image registry settings.
   # Registries such as GHCR, Quay.io, and Docker Hub are supported.
-  IMAGE_REGISTRY: docker.io/karthiksekaran86
-  IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
-  IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
-  #IMAGE_REGISTRY: trialxdxact.jfrog.io/test1-docker
-  #IMAGE_REGISTRY_USER: ${{ secrets.JFROG_USERNAME }}
-  #IMAGE_REGISTRY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
+  #IMAGE_REGISTRY: docker.io/karthiksekaran86
+  #IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
+  #IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
+  IMAGE_REGISTRY: trialxdxact.jfrog.io/test1-docker
+  IMAGE_REGISTRY_USER: ${{ secrets.JFROG_USERNAME }}
+  IMAGE_REGISTRY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 
   # 🖊️ EDIT to specify custom tags for the container image, or default tags will be generated below.
-  IMAGE_TAGS: ""
-  #IMAGE_TAGS: "trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:2"
+  #IMAGE_TAGS: ""
+  IMAGE_TAGS: "trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:2"
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
