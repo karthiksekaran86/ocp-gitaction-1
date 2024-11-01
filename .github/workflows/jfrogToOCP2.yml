@@ -4,8 +4,8 @@ env:
   OPENSHIFT_SERVER: ${{ secrets.OPENSHIFT_SERVER }}
   OPENSHIFT_TOKEN: ${{ secrets.OPENSHIFT_TOKEN }}
   # 🖊️ EDIT to set the kube context's namespace after login. Leave blank to use your user's default namespace.
-  OPENSHIFT_NAMESPACE: ""
-
+  OPENSHIFT_NAMESPACE: "springproject1"
+  PULL_SECRET_NAME: "jfrogtoken"
   APP_NAME: "ocp-test-1-1"
 
   APP_PORT: "8080"
@@ -37,7 +37,7 @@ jobs:
     # needs: crda-scan
     name: Build and deploy to OpenShift 2
     runs-on: linux-run01
-    # environment: production
+    environment: dev
 
     outputs:
       ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
@@ -147,15 +147,30 @@ jobs:
 
     # This step should create a deployment, service, and route to run your app and expose it to the internet.
     # https://github.com/redhat-actions/oc-new-app#readme
+    #- name: Create and expose app
+    #  id: deploy-and-expose
+    #  uses: redhat-actions/oc-new-app@v1
+    #  with:
+    #    app_name: ${{ env.APP_NAME }}
+    #    image: ${{ steps.push-image.outputs.registry-path }}
+    #    namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+    #    port: ${{ env.APP_PORT }}
+    #    build_env: |
+    #        MY_ENV=MY_VALUE
+    #    create_pull_secret_from: podman
+    #    registry: trialxdxact.jfrog.io
+    #    registry_username: ${{ env.IMAGE_REGISTRY_USER }}
+    #    registry_password: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
     - name: Create and expose app
-      id: deploy-and-expose
-      uses: redhat-actions/oc-new-app@v1
+      id: deploy-and-expose  
+      uses: ./
       with:
-        app_name: ${{ env.APP_NAME }}
-        image: ${{ steps.push-image.outputs.registry-path }}
+        app_name: ocp-test-1-1
+        image: trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
         port: ${{ env.APP_PORT }}
-
+        image_pull_secret_name: ${{ env.PULL_SECRET_NAME }}
+        
     - name: Print application URL
       env:
         ROUTE: ${{ steps.deploy-and-expose.outputs.route }}
