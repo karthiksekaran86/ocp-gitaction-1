@@ -15,13 +15,13 @@ env:
   #IMAGE_REGISTRY: docker.io/karthiksekaran86
   #IMAGE_REGISTRY_USER: ${{ secrets.IMAGE_REGISTRY_USER }}
   #IMAGE_REGISTRY_PASSWORD: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
-  IMAGE_REGISTRY: trialxdxact.jfrog.io/test1-docker
+  IMAGE_REGISTRY: trialrqh0h5.jfrog.io/test1-docker
   IMAGE_REGISTRY_USER: ${{ secrets.JFROG_USERNAME }}
   IMAGE_REGISTRY_PASSWORD: ${{ secrets.JFROG_PASSWORD }}
 
   # 🖊️ EDIT to specify custom tags for the container image, or default tags will be generated below.
   #IMAGE_TAGS: ""
-  IMAGE_TAGS: "trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5"
+  IMAGE_TAGS: "trialrqh0h5.jfrog.io/test1-docker/ocp-test-1-1:5"
 
 on:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
@@ -106,7 +106,7 @@ jobs:
     - name: login to Jfrog
       id: jfrog-login
       run: |
-            docker login trialxdxact.jfrog.io -u $IMAGE_REGISTRY_USER -p $IMAGE_REGISTRY_PASSWORD
+            docker login trialrqh0h5.jfrog.io -u $IMAGE_REGISTRY_USER -p $IMAGE_REGISTRY_PASSWORD
          
     - name: tag docker image
       id: tag-docker-image
@@ -114,14 +114,14 @@ jobs:
             ppp=`pwd`
             echo "QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ "$ppp
             ls -la 
-            docker tag ocp-test-1-1:5 trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5
+            docker tag ocp-test-1-1:5 trialrqh0h5.jfrog.io/test1-docker/ocp-test-1-1:5
 
     - name: push docker image
       id: push-image
       run: |
             ls -la 
-            docker push trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5
-            echo "registry-path='trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5'" >> "$GITHUB_OUTPUT"
+            docker push trialrqh0h5.jfrog.io/test1-docker/ocp-test-1-1:5
+            echo "registry-path='trialrqh0h5.jfrog.io/test1-docker/ocp-test-1-1:5'" >> "$GITHUB_OUTPUT"
       
     # The path the image was pushed to is now stored in ${{ steps.push-image.outputs.registry-path }}
 
@@ -158,7 +158,7 @@ jobs:
     #    build_env: |
     #        MY_ENV=MY_VALUE
     #    create_pull_secret_from: podman
-    #    registry: trialxdxact.jfrog.io
+    #    registry: trialrqh0h5.jfrog.io
     #    registry_username: ${{ env.IMAGE_REGISTRY_USER }}
     #    registry_password: ${{ secrets.IMAGE_REGISTRY_PASSWORD }}
     - name: Create and expose app
@@ -166,7 +166,7 @@ jobs:
       uses: ./
       with:
         app_name: ocp-test-1-1
-        image: trialxdxact.jfrog.io/test1-docker/ocp-test-1-1:5
+        image: trialrqh0h5.jfrog.io/test1-docker/ocp-test-1-1:5
         namespace: ${{ env.OPENSHIFT_NAMESPACE }}
         port: ${{ env.APP_PORT }}
         image_pull_secret_name: ${{ env.PULL_SECRET_NAME }}
